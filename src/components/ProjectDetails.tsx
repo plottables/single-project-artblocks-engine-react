@@ -5,13 +5,11 @@ import Typography from '@mui/material/Typography';
 import Alert from '@mui/material/Alert';
 import Divider from '@mui/material/Divider';
 import LinearProgress from '@mui/material/LinearProgress';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Stack from '@mui/material/Stack';
 import Pagination from '@mui/material/Pagination';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
-import Link from '@mui/material/Link';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import useProject from 'hooks/useProject';
@@ -88,19 +86,9 @@ const ProjectDetails = ({ id }: Props) => {
     maxInvocations,
     scriptJSON,
   } = project;
-  
+
   return project && (
     <Box>
-      <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 4 }}>
-        <Link href="/" underline="hover" sx={{ color: '#666' }}>
-          Home
-        </Link>
-        <Typography>
-          { name }
-        </Typography>
-      </Breadcrumbs>
-
-
       <Grid spacing={2} container>
         {
           project.tokens?.length > 0 && (
@@ -117,17 +105,17 @@ const ProjectDetails = ({ id }: Props) => {
             </Grid>
           )
         }
-        
+
         <Grid item md={4} xs={12} sm={12}>
           <Box sx={{ width: '100%', paddingLeft: [0, 0, 2]}}>
             <ProjectStats
               paused={paused}
               complete={complete}
-              startTime={project?.minterConfiguration?.startTime}
+              startTime={project?.minterConfiguration?.startTime as BigInt}
             />
-            
+
             <Typography variant="h4" mt={3}>
-              { name } 
+              { name }
             </Typography>
 
             <Typography variant="h6" mb={2}>
@@ -170,7 +158,7 @@ const ProjectDetails = ({ id }: Props) => {
           <Box paddingRight={[0, 0, 4]}>
             <Collapsible content={description} />
           </Box>
-          
+
           <Box sx={{ display: 'flex', marginTop: 4 }}>
             <Box mr={6}>
               <Title>
@@ -194,7 +182,7 @@ const ProjectDetails = ({ id }: Props) => {
 
         <Grid item md={5} sm={12} xs={12}>
           <Box display="flex" mb={4}>
-            
+
             {
               website && (
                 <Button
@@ -207,7 +195,7 @@ const ProjectDetails = ({ id }: Props) => {
               )
             }
           </Box>
-            
+
         </Grid>
       </Grid>
 
@@ -217,7 +205,7 @@ const ProjectDetails = ({ id }: Props) => {
         <Box mt={4} mb={4} sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h4">{ invocations} Item{ Number(invocations) === 1 ? '' : 's' }</Typography>
 
-          
+
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box>
               <FormControl fullWidth>
@@ -237,13 +225,13 @@ const ProjectDetails = ({ id }: Props) => {
                 </NativeSelect>
               </FormControl>
             </Box>
-                  
+
             <Typography fontSize="14px" pt={2} ml={3}>
               Showing  { Math.min(invocations, tokensPerPage) }
             </Typography>
           </Box>
         </Box>
-      
+
         <TokenList
           projectId={id}
           first={tokensPerPage}

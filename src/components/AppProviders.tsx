@@ -20,6 +20,7 @@ import {
 } from '@apollo/client';
 import theme from 'theme';
 import { graphQLURL } from 'config';
+import React from "react";
 
 const queryClient = new QueryClient();
 

@@ -2,9 +2,7 @@ import moment from 'moment';
 import Box from '@mui/material/Box';
 import useToken from 'hooks/useToken';
 import Alert from '@mui/material/Alert';
-import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
@@ -21,7 +19,7 @@ interface Props {
 }
 
 const TokenDetails = ({ id }: Props) => {
-  const { loading, error, data } = useToken(id);
+  const { loading, error, data } = useToken(coreContractAddress?.toLowerCase() + '-' + id);
   const token = data?.token;
   const size = useWindowSize();
   const theme = useTheme();
@@ -46,18 +44,7 @@ const TokenDetails = ({ id }: Props) => {
 
   return token && (
     <Box>
-      <Breadcrumbs aria-label="breadcrumb" sx={{ marginBottom: 4 }}>
-        <Link href="/" underline="hover" sx={{ color: '#666' }}>
-          Home
-        </Link>
-        <Link href={`/project/${token.project.projectId}`} underline="hover" sx={{ color: '#666' }}>
-          { token.project.name }
-        </Link>
-        <Typography>
-          #{ token.invocation }
-        </Typography>
-      </Breadcrumbs>
-      
+
       <Grid container spacing={2}>
         <Grid item md={8}>
           <TokenPreview
@@ -74,7 +61,7 @@ const TokenDetails = ({ id }: Props) => {
         <Grid item md={4}>
           <Typography fontSize="14px" mb={4}>
             Minted { moment.unix(token.createdAt).format('MMM DD, YYYY') }
-          </Typography> 
+          </Typography>
           <Typography variant="h4">
             { token.project.name } #{ token.invocation }
           </Typography>

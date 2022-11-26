@@ -4,7 +4,7 @@ import { resolveName } from 'utils/ens';
 
 interface AddressProps {
   address: string;
-};
+}
 
 const Address = ({ address }: AddressProps) => {
   const [ensName, setEnsName] = useState<string | null>('');

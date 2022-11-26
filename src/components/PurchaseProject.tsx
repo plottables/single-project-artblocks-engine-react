@@ -52,13 +52,13 @@ const PurchaseProject = ({ project }:Props) => {
 
   const mint = () => {
     if (!provider || !mintContractAddress) {
-      return; 
+      return;
     }
     notifyTx({
       method: mintAction,
       chainId: expectedChainId,
       success: 'Your token has been minted!',
-      error: 'An error occured while trying to mint.',
+      error: 'An error occurred while trying to mint.',
       onSuccess: (receipt:any) => {
         const tokenId = parseInt(receipt?.events[0]?.topics[3], 16);
         setMintedTokenId(tokenId);
@@ -67,7 +67,7 @@ const PurchaseProject = ({ project }:Props) => {
       },
       onSubmitted: () => setPending(true),
       onError: () => setPending(false),
-    }); 
+    });
   }
 
   if (!project) {
@@ -130,7 +130,7 @@ const PurchaseProject = ({ project }:Props) => {
       symbol: project.currencySymbol,
     }
   }
-  
+
   const Mint = () => (
     <Button
       variant="contained"

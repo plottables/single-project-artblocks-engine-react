@@ -45,7 +45,7 @@ const ApproveERC20 = ({
   }, [queryClient, paymentToken.address, account]);
 
   const onApprove = useCallback(async () => {
-    notifyTx({
+    await notifyTx({
       method: approve,
       chainId,
       success: 'Token approved.',
@@ -57,7 +57,7 @@ const ApproveERC20 = ({
   }, [chainId, approve, onSuccess]);
 
   const onRevokeApproval = useCallback(async () => {
-    notifyTx({
+    await notifyTx({
       method: revokeApproval,
       chainId,
       success: 'Approval revoked',

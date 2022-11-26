@@ -38,7 +38,7 @@ const MintSuccessDialog = ({
       <Alert severity="success">
         Mint successful!
       </Alert>
-      
+
       {
         mintedTokenId && (
           <Box sx={{ display: 'flex', justifyContent: 'center', margin: '24px 0' }}>
@@ -56,7 +56,7 @@ const MintSuccessDialog = ({
         <Button color="secondary" sx={{ marginRight: 1 }} onClick={handleClose}>
           Close
         </Button>
-        <Button href={`/token/${coreContractAddress?.toLowerCase()}-${mintedTokenId}`} color="primary">
+        <Button href={`/token/${mintedTokenId}`} color="primary">
           View details
         </Button>
       </DialogActions>

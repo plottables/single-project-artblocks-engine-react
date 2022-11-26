@@ -6,13 +6,6 @@ import { ERC20Token } from 'utils/types';
 import { ERC20__factory } from 'contracts';
 import { useWeb3React } from '@web3-react/core';
 
-export const TRANSACTION_SUCCESS = {
-  type: 'success',
-  message:
-    'Your transaction has succeeded. The UI may take a few moments to reflect the changes.',
-  autoDismiss: 10000,
-};
-
 export enum ApprovalState {
   UNKNOWN = 'UNKNOWN',
   NOT_APPROVED = 'NOT_APPROVED',
@@ -61,7 +54,7 @@ export function useApproveToken(
       : ApprovalState.APPROVED;
   }, [amountToApprove, currentAllowance, spender]);
 
-  const approve = useCallback(async (): Promise<ContractTransaction> => {;
+  const approve = useCallback(async (): Promise<ContractTransaction> => {
 
     if (approvalState === ApprovalState.APPROVED) {
       throw Error('Unnecessary approval');

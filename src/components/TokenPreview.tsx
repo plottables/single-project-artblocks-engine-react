@@ -39,8 +39,7 @@ const TokenPreview = ({
           src={`${generatorUrl}/${coreContractAddress?.toLowerCase()}/${tokenId}`}
           width={String(width) + 'px'}
           height={String(height)}
-          frameBorder="0"
-          style={{ marginBottom: '-7px' }}
+          style={{ marginBottom: '-7px', border: 'none' }}
         />
       </Card>
       <Box sx={{ marginTop: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -82,7 +81,7 @@ const TokenPreview = ({
             )
           }
           {
-            showImageLink && ( 
+            showImageLink && (
               <Button
                 startIcon={<ImageIcon  sx={{ color: '#666'}} />}
                 sx={{

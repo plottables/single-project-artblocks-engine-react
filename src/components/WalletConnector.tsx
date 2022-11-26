@@ -25,7 +25,7 @@ const formatError = (error:any): string => {
   return 'Unexpected error';
 }
 
-const WalletConnector = ({ name, logo, width=100, connector, hooks, onError, onSuccess }: Props) => {
+const WalletConnector = ({ name, logo, width=100, connector, onError, onSuccess }: Props) => {
   const connect = useCallback(async () => {
     onError(undefined)
     try {

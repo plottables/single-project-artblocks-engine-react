@@ -49,7 +49,7 @@ const TokenList = ({
   const maxColumns = 3;
   if (size && !isNaN(size.width)) {
     width = size.width > theme.breakpoints.values.md
-      ? (Math.min(size.width, 1200)- 96)*1/maxColumns
+      ? (Math.min(size.width, 1200) - 96)/maxColumns
         : size.width > theme.breakpoints.values.sm
           ? size.width - 64
           : size.width - 48
@@ -62,7 +62,7 @@ const TokenList = ({
           {
             data.tokens.map(((token:Token) => (
               <Grid key={token.tokenId} item md={4} sm={12} xs={12}>
-                <Link href={`/token/${token.id}`}>
+                <Link href={`/token/${token.tokenId}`}>
                   <TokenImage
                     tokenId={token.tokenId}
                     aspectRatio={aspectRatio}
