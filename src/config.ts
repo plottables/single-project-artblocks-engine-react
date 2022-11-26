@@ -12,7 +12,6 @@ export const jsonRpcProviderGoerliUrl = process.env.REACT_APP_JSON_RPC_PROVIDER_
 export const openseaBaseUrl = process.env.REACT_APP_OPENSEA_BASE_URL;
 export const etherscanBaseUrl = process.env.REACT_APP_ETHERSCAN_BASE_URL;
 export const expectedChainId = Number(process.env.REACT_APP_EXPECTED_CHAIN_ID);
-export const projectsPerPage = 8;
 export const tokensPerPage = 12;
 export const confirmations = 3;
 export const isDev = false;

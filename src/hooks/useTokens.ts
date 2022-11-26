@@ -36,11 +36,15 @@ const useTokens = (projectId: string, params: TokensQueryParams) => {
   const skip = params?.skip || 0;
   const orderDirection = params?.orderDirection || OrderDirection.ASC;
 
-  const { loading, error, data } = useQuery(gql(tokensQuery(projectId, {
+  const { loading, error, data, refetch } = useQuery(gql(tokensQuery(projectId, {
     first,
     skip,
     orderDirection,
   })));
+
+  if (error) {
+    refetch()
+  }
 
   return {
     loading,

@@ -44,7 +44,11 @@ const projectQuery = (id: string) => `
   }`;
 
 const useProject = (id: string) => {
-  const { loading, error, data } = useQuery(gql(projectQuery(id)));
+  const { loading, error, data, refetch } = useQuery(gql(projectQuery(id)));
+
+  if (error) {
+    refetch()
+  }
 
   return {
     loading,
