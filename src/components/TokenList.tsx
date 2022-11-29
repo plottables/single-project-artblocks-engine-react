@@ -16,6 +16,7 @@ interface Props {
   skip?: number;
   orderDirection?: OrderDirection;
   aspectRatio?: number;
+  address?: string;
 }
 
 const TokenList = ({
@@ -24,12 +25,14 @@ const TokenList = ({
   skip=0,
   orderDirection=OrderDirection.ASC,
   aspectRatio=1,
+  address='',
 }: Props) => {
   const {loading, error, data } = useTokens(projectId, {
     first,
     skip,
     orderDirection,
-  });
+  },
+  address);
   const size = useWindowSize();
   const theme = useTheme();
 

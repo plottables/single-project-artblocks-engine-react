@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import Tooltip from '@mui/material/Tooltip';
 import { resolveName } from 'utils/ens';
+import Link from "@mui/material/Link";
+import Typography from "@mui/material/Typography";
 
 interface AddressProps {
   address: string;
@@ -27,7 +29,11 @@ const Address = ({ address }: AddressProps) => {
   return (
     address !== null ?
     <Tooltip title={address}>
-      <span>{ ensName || shortAddress }</span>
+      <Link href={`/user/${address}`} underline="hover" sx={{color: 'white'}}>
+        <Typography color="inherit">
+          { ensName || shortAddress }
+        </Typography>
+      </Link>
     </Tooltip>
     : null
   )
