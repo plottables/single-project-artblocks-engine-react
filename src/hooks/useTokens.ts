@@ -15,14 +15,15 @@ const tokensQuery = (projectId: string, {
   first,
   skip,
   orderDirection,
-}: TokensQueryParams) => `
+}: TokensQueryParams, address: string) => `
   query GetTokens {
     tokens(
       first: ${first},
       skip: ${skip},
       orderBy: createdAt orderDirection: ${orderDirection},
       where: {
-        project: "${projectId}"
+        project: "${projectId}",
+        ${address != '' ? `owner: "${address.toLowerCase()}"` : ''}
       }
     ) {
       id
@@ -31,7 +32,7 @@ const tokensQuery = (projectId: string, {
     }
   }`;
 
-const useTokens = (projectId: string, params: TokensQueryParams) => {
+const useTokens = (projectId: string, params: TokensQueryParams, address: string) => {
   const first = params?.first || tokensPerPage;
   const skip = params?.skip || 0;
   const orderDirection = params?.orderDirection || OrderDirection.ASC;
@@ -40,7 +41,7 @@ const useTokens = (projectId: string, params: TokensQueryParams) => {
     first,
     skip,
     orderDirection,
-  })));
+  }, address)));
 
   if (error) {
     refetch()
