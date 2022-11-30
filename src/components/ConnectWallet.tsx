@@ -18,6 +18,7 @@ import {
 } from 'utils/connectors';
 import WalletConnector from './WalletConnector';
 import Address from './Address';
+import Link from '@mui/material/Link';
 
 const ConnectWallet = () => {
   const [open, setOpen] = useState(false);
@@ -57,7 +58,11 @@ const ConnectWallet = () => {
       {
         isActive && account ? (
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Address address={account} />
+            <Link href={`/user/${account}`} underline="hover" sx={{color: 'white'}}>
+              <Typography color="inherit">
+                <Address address={account} />
+              </Typography>
+            </Link>
             <IconButton onClick={disconnect} sx={{ marginLeft: 1, color: 'white' }}>
               <LogoutIcon />
             </IconButton>
@@ -87,9 +92,9 @@ const ConnectWallet = () => {
           <Typography pb={1} variant="h6">
             Choose a wallet
           </Typography>
-          
+
           <Divider />
-          
+
           <Box sx={{
             display: 'flex',
             marginTop: 3,
